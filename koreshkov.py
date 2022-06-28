@@ -24,12 +24,12 @@ AMERICAN_CITIES = ['Нью-Йорк',
 
 class FilterAmerica(MessageFilter):
     def filter(self, message):
-        return 'Америк' in message.text
+        return '/Америк' in message.text
 
 
 class FilterConst(MessageFilter):
     def filter(self, message):
-        return 'Костя' in message.text or 'Корешков' in message.text
+        return '/Костя' in message.text or '/Корешков' in message.text
 
 
 def who_said_america(update, context):
