@@ -24,11 +24,11 @@ AMERICAN_CITIES = ['Нью-Йорк',
 def who_said_america(update, context):
     chat = update.effective_chat
     print(chat)
-    if 'Костя' in update.message.text or 'Корешков' in update.message.text:
+    if 'костя' in update.message.text.lower() or 'корешков' in update.message.text.lower():
         context.bot.send_message(chat_id=chat.id, text='Хватит флудить, я в Америке! (Северной)')        
-    elif 'Америк' in update.message.text:
+    elif 'америк' in update.message.text.lower():
         context.bot.send_message(chat_id=chat.id, text=f'Кто сказал про Америку?? Я как раз собираюсь в {AMERICAN_CITIES[random.randint(0, (len(AMERICAN_CITIES) - 1))]}')
-    elif 'сужда' in update.message.text:
+    elif 'сужда' in update.message.text.lower():
         context.bot.send_message(chat_id=chat.id, text='Я тоже осуждаю!')
 
 def main():
