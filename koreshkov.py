@@ -23,7 +23,6 @@ AMERICAN_CITIES = ['Нью-Йорк',
 
 def who_said_america(update, context):
     chat = update.effective_chat
-    print(chat)
     if 'костя' in update.message.text.lower() or 'корешков' in update.message.text.lower():
         context.bot.send_message(chat_id=chat.id, text='Хватит флудить, я в Америке! (Северной)')        
     elif 'америк' in update.message.text.lower():
