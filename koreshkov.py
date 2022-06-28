@@ -1,6 +1,5 @@
 import os
 import random
-import time
 
 from dotenv import load_dotenv
 from telegram.ext import Updater, Filters, MessageHandler, MessageFilter
@@ -22,30 +21,18 @@ AMERICAN_CITIES = ['Нью-Йорк',
                    'Сан-Хосе',]
 
 
-class FilterAmerica(MessageFilter):
-    def filter(self, message):
-        return 'Америк' in message.text
-
-
-class FilterConst(MessageFilter):
-    def filter(self, message):
-        return 'Костя' in message.text or 'Корешков' in message.text
-
-
 def who_said_america(update, context):
     chat = update.effective_chat
-    context.bot.send_message(chat_id=chat.id, text=f'Кто сказал про Америку?? Я как раз собираюсь в {AMERICAN_CITIES[random.randint(0, (len(AMERICAN_CITIES) - 1))]}')
-
-def kostya(update, context):
-    chat = update.effective_chat
-    context.bot.send_message(chat_id=chat.id, text='Хватит флудить, я в Америке!')
-
-filter_america = FilterAmerica()
-filter_kostya = FilterConst()
+    print(chat)
+    if 'Костя' in update.message.text or 'Корешков' in update.message.text:
+        context.bot.send_message(chat_id=chat.id, text='Хватит флудить, я в Америке!')        
+    elif 'Америк' in update.message.text:
+        context.bot.send_message(chat_id=chat.id, text=f'Кто сказал про Америку?? Я как раз собираюсь в {AMERICAN_CITIES[random.randint(0, (len(AMERICAN_CITIES) - 1))]}')
+    elif 'сужда' in update.message.text:
+        context.bot.send_message(chat_id=chat.id, text='Я тоже осуждаю!')
 
 def main():
-    updater.dispatcher.add_handler(MessageHandler(filter_america, who_said_america))
-    updater.dispatcher.add_handler(MessageHandler(filter_kostya, kostya))
+    updater.dispatcher.add_handler(MessageHandler(Filters.text, who_said_america))
     updater.start_polling()
 
     updater.idle()
