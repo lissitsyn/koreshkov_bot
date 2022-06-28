@@ -34,7 +34,7 @@ class FilterConst(MessageFilter):
 
 def who_said_america(update, context):
     chat = update.effective_chat
-    context.bot.send_message(chat_id=chat.id, text=f'Кто сказал про Америку?? Я как раз собираюсь в {AMERICAN_CITIES[random.randint(0, len(AMERICAN_CITIES))]}')
+    context.bot.send_message(chat_id=chat.id, text=f'Кто сказал про Америку?? Я как раз собираюсь в {AMERICAN_CITIES[random.randint(len(AMERICAN_CITIES))]}')
 
 def kostya(update, context):
     chat = update.effective_chat
